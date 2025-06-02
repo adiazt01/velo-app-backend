@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from './prisma.service';
-import { PrismaClient } from 'generated/prisma';
 
 describe('PrismaService', () => {
   let service: PrismaService;
@@ -18,7 +17,9 @@ describe('PrismaService', () => {
   });
 
   it('should call $connect when onModuleInit is called', async () => {
-    const connectMock = jest.spyOn(service, '$connect').mockResolvedValue(undefined);
+    const connectMock = jest
+      .spyOn(service, '$connect')
+      .mockResolvedValue(undefined);
     await service.onModuleInit();
     expect(connectMock).toHaveBeenCalled();
     connectMock.mockRestore();

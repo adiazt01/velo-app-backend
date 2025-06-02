@@ -17,7 +17,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e": "jest --config ./jest-e2e.json",
+    "test:e2e:watch": "jest --config ./jest-e2e.json --watch",
+    "test:e2e:cov": "jest --config ./jest-e2e.json --coverage",
     "docker:local": "docker compose -f docker-compose.local.yml up",
     "prisma:setup": "prisma migrate dev && prisma generate"
   },
@@ -68,6 +70,7 @@
   },
   "jest": {
     "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
       "^@common/(.*)$": "<rootDir>/src/common/$1",
       "^@modules/(.*)$": "<rootDir>/src/modules/$1",
       "^@config/(.*)$": "<rootDir>/src/config/$1",
